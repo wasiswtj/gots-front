@@ -1,27 +1,54 @@
 <template>
   <nb-content padder :style="{ marginTop: 0 }">
-    <nb-card :style="{ flex: 0 }">
-      <nb-card-item>
-        <nb-body>
-          <nb-text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Consequuntur sunt itaque adipisci quisquam pariatur qui, reiciendis
-            architecto quod sint incidunt labore nisi totam illum numquam non
-            magnam praesentium, maxime quaerat!
-          </nb-text>
-        </nb-body>
-      </nb-card-item>
+    <nb-card>
+        <nb-card-item>
+          <nb-left>
+            <nb-thumbnail :source="logoPenaksir"></nb-thumbnail>
+            <nb-body>
+              <nb-text>{{dataPengajuan.nama_penaksir}}</nb-text>
+              <nb-text note>Cabang Kemanggisan</nb-text>
+            </nb-body>
+          </nb-left>
+        </nb-card-item>
     </nb-card>
 
-    <nb-card :style="{ flex: 0 }">
-      <nb-card-item>
-        <nb-body>
+    <nb-card :style="{ marginBottom: 15 }">
+        <nb-card-item header bordered>
           <nb-text>
-            NativeBase gives you the potential of building applications that run
-            on iOS and Android using a single codebase.
+            No Pengajuan: {{dataPengajuan.no_pengajuan}}
           </nb-text>
-        </nb-body>
-      </nb-card-item>
-    </nb-card>
+        </nb-card-item>
+
+        <nb-card-item bordered>
+          <nb-body>
+            <nb-text>
+              Jenis Perhiasan: {{dataPengajuan.jenis_perhiasan}}
+            </nb-text>
+            <nb-text>
+              Kadar: {{dataPengajuan.kadar}}
+            </nb-text>
+            <nb-text>
+              Berat Kotor: {{dataPengajuan.berat_kotor}}
+            </nb-text>
+            <nb-text>
+              Berat Bersih: {{dataPengajuan.berat_bersih}}
+            </nb-text>
+          </nb-body>
+        </nb-card-item>
+      </nb-card>
   </nb-content>
 </template>
+
+<script>
+import logoPenaksir from "../../../../assets/penaksir.png";
+
+export default {
+  name: 'TabFour',
+  props: ['dataPengajuan'],
+  data() {
+    return {
+      logoPenaksir,
+    }
+  }
+}    
+</script>

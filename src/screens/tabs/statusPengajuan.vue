@@ -1,5 +1,5 @@
 <template>
-  <nb-container v-if="renderComponent">
+  <nb-container>
     <nb-header hasTabs>
       <nb-left>
         <nb-button transparent :onPress="() => this.props.navigation.goBack()">
@@ -11,21 +11,25 @@
       </nb-body>
     </nb-header>
 
-    <nb-tabs :initialPage=tabActive :renderTabBar="getScollableTabComp">
+    <nb-content v-if="loadingScreen">
+        <nb-spinner color="blue" :style="{marginTop: 50}"/>
+    </nb-content>
+
+    <nb-tabs :initialPage=tabActive :renderTabBar="getScollableTabComp" v-if="renderComponent">
       <nb-tab heading="Menunggu Konfirmasi">
-        <tab-one />
+        <tab-one v-if="tabActive==0" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
       <nb-tab heading="Dikonfirmasi">
-        <tab-two />
+        <tab-two v-if="tabActive==1" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
       <nb-tab heading="Menuju Lokasi">
-        <tab-three />
+        <tab-three v-if="tabActive==2" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
       <nb-tab heading="Penaksir Tiba">
-        <tab-four />
+        <tab-four v-if="tabActive==3" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
       <nb-tab heading="Disetujui">
-        <tab-five />
+        <tab-five v-if="tabActive==4" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
     </nb-tabs>
   </nb-container>
@@ -39,8 +43,8 @@ import TabTwo from "./components/tabTwo";
 import TabThree from "./components/tabThree";
 import TabFour from "./components/tabFour";
 import TabFive from "./components/tabFive";
-import { store } from "../../boot/setup.vue"
-import axios from 'axios'
+import { store } from "../../boot/setup.vue";
+import axios from 'axios';
 
 export default {
   components: { TabOne, TabTwo, TabThree, TabFour, TabFive },
@@ -48,32 +52,60 @@ export default {
     getScollableTabComp() {
       return <ScrollableTab />;
     },
-    forceRerender() {
-      // Remove my-component from the DOM
-      this.renderComponent = false;
-      
-      this.$nextTick(() => {
-        // Add the component back in
-        this.renderComponent = true;
-      });
-    }
   },
   data() {
     return {
-      tabActive: null,
-      noPengajuan: '',
-      renderComponent: true,
+      tabActive: 0,
+      renderComponent: false,
+      loadingScreen: true,
+      dataPengajuan : [{ 
+        noPengajuan: '',
+        jenisPerhiasan: '',
+        no_pengajuan: '',
+        no_cif: '',
+        jenis_perhiasan: '',
+        kadar: '',
+        berat_kotor: '',
+        berat_bersih: '',
+        perkiraan_harga: '',
+        harga_taksir: '',
+        id_hps: '',
+        keterangan_barang: '',
+        titik_gadai: '',
+        provinsi: '',
+        kabupaten: '',
+        kecamatan: '',
+        kelurahan: '',
+        foto_perhiasan: '',
+        nama_penaksir: ''
+      }],
     }
   },
   beforeMount() {
     new Promise((resolve, reject) => {
-      this.$http({url: 'http://10.83.9.141:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
+      this.$http({url: 'http://192.168.100.223:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
-        // const token = resp.data.token
-        // axios.defaults.headers.common['Authorization'] = token
-        // commit('auth_success', token)
-        this.tabActive = Number(resp.data.data.id_status)
-        console.log(this.tabActive)
+        this.dataPengajuan.no_pengajuan= resp.data.data.no_pengajuan
+        this.dataPengajuan.no_cif= resp.data.data.no_cif
+        this.dataPengajuan.jenis_perhiasan= resp.data.data.jenis_perhiasan
+        this.dataPengajuan.kadar= resp.data.data.kadar
+        this.dataPengajuan.berat_kotor= resp.data.data.berat_kotor
+        this.dataPengajuan.berat_bersih= resp.data.data.berat_bersih
+        this.dataPengajuan.perkiraan_harga= resp.data.data.perkiraan_harga
+        this.dataPengajuan.harga_taksir= resp.data.data.harga_taksir
+        this.dataPengajuan.id_hps= resp.data.data.id_hps
+        this.dataPengajuan.keterangan_barang= resp.data.data.keterangan_barang
+        this.dataPengajuan.titik_gadai= resp.data.data.titik_gadai
+        this.dataPengajuan.provinsi= resp.data.data.provinsi
+        this.dataPengajuan.kabupaten= resp.data.data.kabupaten
+        this.dataPengajuan.kecamatan= resp.data.data.kecamatan
+        this.dataPengajuan.kelurahan= resp.data.data.kelurahan
+        this.dataPengajuan.foto_perhiasan= resp.data.data.foto_perhiasan
+        this.dataPengajuan.nama_penaksir = resp.data.data.nama_penaksir
+
+        this.tabActive = Number(resp.data.data.id_status)-1
+        this.renderComponent = true
+        this.loadingScreen = false
         resolve(resp)
       })
       .catch(err => {
@@ -82,7 +114,6 @@ export default {
         reject(err)
       })
     })
-    this.forceRerender()
   }
 };
 </script>
