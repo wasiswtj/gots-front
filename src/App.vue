@@ -152,6 +152,7 @@ import TypographyScreen from "./screens/typography";
 // Import Gade OTS Screen
 import StatusPengajuanScreen from "./screens/tabs/statusPengajuan";
 import LoginScreen from "./screens/login/login";
+import PengajuanPerhiasanScreen from "./screens/form/pengajuanPerhiasan";
 
 const Drawer = createDrawerNavigator(
   {
@@ -302,7 +303,8 @@ const AppNavigation = createAppContainer(
 
       // Screen Gadai On The Spot
       StatusPengajuan: { screen: StatusPengajuanScreen },
-      Login: { screen: LoginScreen }
+      Login: { screen: LoginScreen },
+      PengajuanPerhiasan: { screen: PengajuanPerhiasanScreen}
     },
     {
       initialRouteName: "Drawer",

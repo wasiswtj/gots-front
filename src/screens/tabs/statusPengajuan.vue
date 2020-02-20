@@ -83,7 +83,7 @@ export default {
   },
   beforeMount() {
     new Promise((resolve, reject) => {
-      this.$http({url: 'http://192.168.100.223:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
+      this.$http({url: 'http://192.168.43.13:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
         this.dataPengajuan.no_pengajuan= resp.data.data.no_pengajuan
         this.dataPengajuan.no_cif= resp.data.data.no_cif

@@ -20,7 +20,7 @@
         </nb-card-item>
       </nb-card>
 
-      <nb-button rounded success :style="{ marginBottom: 10 }">
+      <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" :style="{ marginBottom: 10 }">
         <nb-text>Ajukan Gadai Sekarang</nb-text>
       </nb-button>
 
@@ -215,6 +215,7 @@ export default {
   },
   data() {
     return {
+      PengajuanPerhiasan: "PengajuanPerhiasan",
       StatusPengajuan: "StatusPengajuan",
       launchScreenBg,
       launchscreenLogo,
