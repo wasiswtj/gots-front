@@ -39,6 +39,9 @@
           <nb-input v-model="keteranganBarang"/>
         </nb-item>
       </nb-form>
+      <nb-button :onPress="_pickImage" block :style="{ flex:1, margin: 15, marginTop: 50 }">
+        <nb-text>Select Image</nb-text>
+      </nb-button>
       <nb-button :onPress="submitData" block :style="{ margin: 15, marginTop: 50 }">
         <nb-text>Sign In</nb-text>
       </nb-button>
@@ -50,6 +53,7 @@
 import { Dimensions, Platform } from "react-native";
 import { store } from "../../boot/setup.vue"
 import { Toast } from "native-base";
+import * as ImagePicker from "expo-image-picker";
 
 export default {
   props: {
@@ -81,6 +85,8 @@ export default {
     //   }
     // })
   },
+  mounted() {
+  },
   methods: {
     submitData: function () {
       var $data = {
@@ -91,7 +97,7 @@ export default {
         berat_bersih: this.beratBersih,
         keterangan_barang: this.keteranganBarang,
         titik_gadai: "-6.191365, 106.781534",
-        foto_perhiasan: "Base 64",
+        foto_perhiasan: this.fotoPerhiasan,
       }
       
       this.$http({url: 'http://192.168.43.13:9000/api/pengajuan', data: $data, method: 'POST', headers: {'Content-Type': 'application/json' }})
@@ -111,6 +117,14 @@ export default {
         buttonText: "Okay",
         type: "danger"
       });
+    },
+    async _pickImage(){
+      let response = await ImagePicker.launchCameraAsync({
+        base64: true,
+        quality: 0.5
+      });
+
+      this.fotoPerhiasan = response.base64
     }
   }
 };
