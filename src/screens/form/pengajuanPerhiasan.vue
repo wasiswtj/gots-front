@@ -9,7 +9,6 @@
       <nb-body>
         <nb-title>Pengajuan Gadai Perhiasan</nb-title>
       </nb-body>
-      <nb-right />
     </nb-header>
 
     <nb-content padder>
@@ -39,11 +38,25 @@
           <nb-input v-model="keteranganBarang"/>
         </nb-item>
       </nb-form>
-      <nb-button :onPress="_pickImage" block :style="{ flex:1, margin: 15, marginTop: 50 }">
-        <nb-text>Select Image</nb-text>
+
+      <nb-card v-if="fotoPerhiasan!=''" :style="{ flex:1, marginTop: 15 }">
+        <nb-card-item cardBody>
+          <image class="card-item-image"
+            :style="{height: 300, flex:1}"
+            :source="{uri: 'data:image/jpeg;base64,' + fotoPerhiasan}"
+          />
+        </nb-card-item>
+      </nb-card>
+
+      <nb-button :onPress="_pickImage"
+        dark bordered rounded
+        :style="{ marginBottom: 15, marginTop: 15, flex: 1}"
+      >
+        <nb-icon active name="camera" />
       </nb-button>
-      <nb-button :onPress="submitData" block :style="{ margin: 15, marginTop: 50 }">
-        <nb-text>Sign In</nb-text>
+
+      <nb-button :onPress="submitData" rounded success :style="{ flex:1, marginBottom: 15 }">
+        <nb-text>Ajukan Gadai</nb-text>
       </nb-button>
     </nb-content>
   </nb-container>
