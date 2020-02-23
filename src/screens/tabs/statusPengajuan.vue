@@ -2,7 +2,7 @@
   <nb-container>
     <nb-header hasTabs>
       <nb-left>
-        <nb-button transparent :onPress="() => this.props.navigation.goBack()">
+        <nb-button transparent :onPress="() => this.props.navigation.navigate('Home')">
           <nb-icon name="arrow-back" />
         </nb-button>
       </nb-left>
@@ -43,7 +43,6 @@ import TabTwo from "./components/tabTwo";
 import TabThree from "./components/tabThree";
 import TabFour from "./components/tabFour";
 import TabFive from "./components/tabFive";
-import { store } from "../../boot/setup.vue";
 import axios from 'axios';
 
 export default {

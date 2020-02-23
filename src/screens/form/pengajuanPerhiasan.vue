@@ -63,8 +63,7 @@
 </template>
 
 <script>
-import { Dimensions, Platform } from "react-native";
-import { store } from "../../boot/setup.vue"
+import { Dimensions, Platform, Alert } from "react-native";
 import { Toast } from "native-base";
 import * as ImagePicker from "expo-image-picker";
 
@@ -115,11 +114,17 @@ export default {
       
       this.$http({url: 'http://192.168.43.13:9000/api/pengajuan', data: $data, method: 'POST', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
-        
         console.log(resp)
+        Alert.alert(
+          'Informasi',
+          'Pengajuan Gadai Berhasil',
+          [
+            {text: 'Menuju Pengajuan Anda', onPress: () => this.navigation.navigate("StatusPengajuan")},
+          ],
+          { cancelable: false }
+        )
       })
-      .catch(err => {
-        // commit('auth_error', err)
+      .catch(err => {     
         this.showIncompleteData()
         console.log(err)
       })

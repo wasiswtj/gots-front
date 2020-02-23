@@ -20,7 +20,7 @@
         </nb-card-item>
       </nb-card>
 
-      <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" :style="{ marginBottom: 10 }">
+      <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" :style="{ flex: 1, marginBottom: 10 }">
         <nb-text>Ajukan Gadai Sekarang</nb-text>
       </nb-button>
 
@@ -41,7 +41,7 @@
               <nb-text>Anda</nb-text>
             </nb-list>
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
+              <nb-button transparent :onPress="checkState" padded>
                 <nb-thumbnail large :source="cover"></nb-thumbnail>
               </nb-button>
               <nb-text/>
@@ -59,127 +59,7 @@
           </view>
           <nb-right/>
         </nb-card-item>
-
-        <!-- <nb-card-item
-          button
-          :onPress="() => this.props.navigation.navigate(StatusPengajuan)"
-        >
-          <nb-left>
-            <nb-icon
-              name="ios-search"
-              :style="{ color: 'green' }"
-            ></nb-icon>
-            <nb-text>
-              Status Pengajuan
-            </nb-text>
-          </nb-left>
-          <nb-right>
-
-          </nb-right>
-        </nb-card-item>
-
-        <nb-card-item>
-          <nb-left>
-            <nb-icon
-              name="bookmarks"
-              :style="{ color: 'green' }"
-            ></nb-icon>
-            <nb-text>
-              Transaksi Anda
-            </nb-text>
-          </nb-left>
-          <nb-right>
-
-          </nb-right>
-        </nb-card-item>
-
-        <nb-card-item>
-          <nb-left>
-            <nb-icon
-              name="ios-paper"
-              :style="{ color: 'green' }"
-            ></nb-icon>
-            <nb-text>
-              Riwayat
-            </nb-text>
-          </nb-left>
-          <nb-right>
-
-          </nb-right>
-        </nb-card-item> -->
       </nb-card>
-  
-      <!-- <view class="view-wrapper-1" :style="{ margin: 25 }">
-        <nb-list :style="{justifyContent: 'center', alignItems: 'center' }">
-          <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
-            <nb-thumbnail large :source="logoPengajuan"></nb-thumbnail>
-          </nb-button>
-          <nb-text/>
-          <nb-text>Pengajuan</nb-text>
-          <nb-text>Anda</nb-text>
-        </nb-list>
-        <nb-list :style="{justifyContent: 'center', alignItems: 'center' }">
-          <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
-            <nb-thumbnail large :source="cover"></nb-thumbnail>
-          </nb-button>
-          <nb-text/>
-          <nb-text>Transaksi</nb-text>
-          <nb-text>Anda</nb-text>
-        </nb-list>
-        <nb-list :style="{justifyContent: 'center', alignItems: 'center' }">
-          <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
-            <nb-thumbnail large :source="cover"></nb-thumbnail>
-          </nb-button>
-          <nb-text/>
-          <nb-text>Riwayat</nb-text>
-          <nb-text>Anda</nb-text>
-        </nb-list>
-      </view>
-
-      <view class="view-wrapper-2">
-        <nb-button rounded success>
-          <nb-text>Success</nb-text>
-        </nb-button>
-      </view>
-
-      <view class="view-wrapper-2">
-        <nb-button iconLeft info :style="{ marginBottom: 20 }">
-          <nb-icon active name="alert" />
-          <nb-text>Help</nb-text>
-        </nb-button>
-
-        <nb-button large :style="{backgroundColor: '#384850'}" >
-          <nb-icon name='ios-search' :onPress="() => this.props.navigation.navigate(StatusPengajuan)" :style="{color: '#00c497', fontSize: 20 }">
-            <nb-text :style="{color: '#fff', fontSize: 20 }"> Status Pengajuan</nb-text>
-          </nb-icon>
-        </nb-button>
-      </view>
-      
-      <view class="">
-        <nb-card>
-          <nb-card-item
-            button
-            :onPress="login"
-          >
-            <nb-body>
-              <nb-text>This is just a basic card with some text to boot.</nb-text>
-              <nb-text>Pengajuan</nb-text>
-            </nb-body>
-          </nb-card-item>
-        </nb-card>
-        <nb-card>
-          <nb-card-item
-            button
-            :onPress="checkState"
-          >
-            <nb-body>
-              <nb-text>This is just a basic card with some text to boot.</nb-text>
-              <nb-text>Pengajuan</nb-text>
-            </nb-body>
-          </nb-card-item>
-        </nb-card>
-      </view>     -->
- 
     </nb-content>
   </nb-container>
 </template>
@@ -190,8 +70,6 @@ import launchScreenBg from "../../../assets/launchscreen-bg.png";
 import launchscreenLogo from "../../../assets/logo-kitchen-sink.png";
 import cover from "../../../assets/web-cover1.jpg";
 import logoPengajuan from "../../../assets/logo-pengajuan.png";
-import { Store } from 'vuex';
-import { store } from "../../boot/setup.vue"
 
 export default {
   props: {
@@ -234,7 +112,7 @@ export default {
       },
       cover,
       logoPengajuan,
-      token: store.state.token
+      token: this.$store.state.token
     };
   },
   methods: {
@@ -249,7 +127,7 @@ export default {
       .catch(err => console.log(err))
     },
     checkState: function () {
-      console.log(store.state.token)
+      console.log(this.$store.state.token)
     }
   }
 };

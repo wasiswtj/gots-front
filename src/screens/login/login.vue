@@ -33,7 +33,6 @@
 
 <script>
 import { Dimensions, Platform } from "react-native";
-import { store } from "../../boot/setup.vue"
 import { Toast } from "native-base";
 
 export default {
@@ -71,7 +70,7 @@ export default {
       let email = this.email 
       let password = this.password
 
-      store.dispatch('login', { email, password })
+      this.$store.dispatch('login', { email, password })
         .then(() => {
           this.navigation.navigate("Home")
         })

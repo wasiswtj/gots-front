@@ -21,10 +21,9 @@ Vue.use(VueNativeBase);
 Vue.use(Vuex)
 
 Vue.prototype.$http = axios;
-
 Vue.config.productionTip = false
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
 	state: {
   		status: '',
   		token: '',
@@ -103,6 +102,8 @@ export const store = new Vuex.Store({
 	  authStatus: state => state.status,
 	}
 })
+
+Vue.prototype.$store = store;
 
 export default {
   components: { App, AppLoading },
