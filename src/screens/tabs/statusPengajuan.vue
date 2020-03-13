@@ -28,9 +28,6 @@
       <nb-tab heading="Penaksir Tiba">
         <tab-four v-if="tabActive==3" v-bind:dataPengajuan="dataPengajuan"/>
       </nb-tab>
-      <nb-tab heading="Disetujui">
-        <tab-five v-if="tabActive==4" v-bind:dataPengajuan="dataPengajuan"/>
-      </nb-tab>
     </nb-tabs>
   </nb-container>
 </template>
@@ -42,11 +39,10 @@ import TabOne from "./components/tabOne";
 import TabTwo from "./components/tabTwo";
 import TabThree from "./components/tabThree";
 import TabFour from "./components/tabFour";
-import TabFive from "./components/tabFive";
 import axios from 'axios';
 
 export default {
-  components: { TabOne, TabTwo, TabThree, TabFour, TabFive },
+  components: { TabOne, TabTwo, TabThree, TabFour },
   methods: {
     getScollableTabComp() {
       return <ScrollableTab />;
@@ -76,7 +72,8 @@ export default {
         kecamatan: '',
         kelurahan: '',
         foto_perhiasan: '',
-        nama_penaksir: ''
+        nama_penaksir: '',
+        nama_outlet: ''
       }],
     }
   },
@@ -84,24 +81,7 @@ export default {
     new Promise((resolve, reject) => {
       this.$http({url: 'http://192.168.43.13:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
-        this.dataPengajuan.no_pengajuan= resp.data.data.no_pengajuan
-        this.dataPengajuan.no_cif= resp.data.data.no_cif
-        this.dataPengajuan.jenis_perhiasan= resp.data.data.jenis_perhiasan
-        this.dataPengajuan.kadar= resp.data.data.kadar
-        this.dataPengajuan.berat_kotor= resp.data.data.berat_kotor
-        this.dataPengajuan.berat_bersih= resp.data.data.berat_bersih
-        this.dataPengajuan.perkiraan_harga= resp.data.data.perkiraan_harga
-        this.dataPengajuan.harga_taksir= resp.data.data.harga_taksir
-        this.dataPengajuan.id_hps= resp.data.data.id_hps
-        this.dataPengajuan.keterangan_barang= resp.data.data.keterangan_barang
-        this.dataPengajuan.titik_gadai= resp.data.data.titik_gadai
-        this.dataPengajuan.provinsi= resp.data.data.provinsi
-        this.dataPengajuan.kabupaten= resp.data.data.kabupaten
-        this.dataPengajuan.kecamatan= resp.data.data.kecamatan
-        this.dataPengajuan.kelurahan= resp.data.data.kelurahan
-        this.dataPengajuan.foto_perhiasan= resp.data.data.foto_perhiasan
-        this.dataPengajuan.nama_penaksir = resp.data.data.nama_penaksir
-
+        this.dataPengajuan = resp.data.data
         this.tabActive = Number(resp.data.data.id_status)-1
         this.renderComponent = true
         this.loadingScreen = false

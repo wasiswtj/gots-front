@@ -8,10 +8,10 @@
     </nb-header>
 
     <nb-content padder class="content-wrapper">
-      <nb-card :style="{ marginBottom: 200 }">
-        <nb-card-item>
+      <nb-card :style="{ marginBottom: 200, borderRadius :15 }">
+        <nb-card-item :style="{ borderRadius :15}">
           <nb-left>
-            <nb-thumbnail :source="cover"></nb-thumbnail>
+            <nb-thumbnail :source="logoNasabah"></nb-thumbnail>
             <nb-body>
               <nb-text>Hello</nb-text>
               <nb-text note>GeekyAnts</nb-text>
@@ -24,12 +24,12 @@
         <nb-text>Ajukan Gadai Sekarang</nb-text>
       </nb-button>
 
-      <nb-card :style="{ marginBottom: 15 }">
-        <nb-card-item header bordered>
+      <nb-card :style="{ marginBottom: 15, borderRadius: 15 }">
+        <nb-card-item header bordered :style="{ borderRadius: 15 }">
           <nb-text :style="{ color: 'green' }">Menu Anda</nb-text>
         </nb-card-item>
 
-        <nb-card-item>
+        <nb-card-item :style="{ borderRadius: 15 }">
           <nb-left/>
           <view class="view-wrapper-1" :style="{ marginTop:20 }">
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
@@ -69,6 +69,7 @@ import { Dimensions, Platform } from "react-native";
 import launchScreenBg from "../../../assets/launchscreen-bg.png";
 import launchscreenLogo from "../../../assets/logo-kitchen-sink.png";
 import cover from "../../../assets/web-cover1.jpg";
+import logoNasabah from "../../../assets/nasabah.png";
 import logoPengajuan from "../../../assets/logo-pengajuan.png";
 
 export default {
@@ -79,17 +80,6 @@ export default {
   },
   created() {
     this.navigation.navigate("Login")
-    
-    // if (store.state.token!=null) {
-    //   this.navigation.navigate("StatusPengajuan")
-    // }
-    // } catch (err) {} finally {
-    //   this.navigation.navigate(this.data.StatusPengajuan)
-    // }
-    // if (typeof(this.data.token)=='undefined') {
-    //   console.log('throughThis')
-    //   this.navigation.navigate(this.data.StatusPengajuan)
-    // }
   },
   data() {
     return {
@@ -112,6 +102,7 @@ export default {
       },
       cover,
       logoPengajuan,
+      logoNasabah,
       token: this.$store.state.token
     };
   },
@@ -127,7 +118,7 @@ export default {
       .catch(err => console.log(err))
     },
     checkState: function () {
-      console.log(this.$store.state.token)
+      console.log(this.$store.state)
     }
   }
 };

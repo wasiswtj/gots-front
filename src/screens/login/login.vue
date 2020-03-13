@@ -7,9 +7,9 @@
         </nb-button>
       </nb-left> -->
       <!-- <nb-left/> -->
-      <nb-body :style="{ marginLeft: 15 }">
-        <nb-title>GOTS Login</nb-title>
-      </nb-body>
+      <!-- <nb-body :style="{ flex:1, marginLeft: 15, justifyContent: 'center' }"> -->
+        <nb-title :style="{marginTop: 20}">GOTS Login</nb-title>
+      <!-- </nb-body> -->
       <!-- <nb-right /> -->
     </nb-header>
 
@@ -81,7 +81,7 @@ export default {
     },
     showWrongCredentialsWarning() {
       Toast.show({
-        text: "Wrong email or password!",
+        text: "Nomor CIF atau Password anda salah!",
         buttonText: "Okay",
         type: "danger"
       });
