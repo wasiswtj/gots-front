@@ -54,8 +54,8 @@ const store = new Vuex.Store({
 			}
 			
 	        return new Promise((resolve, reject) => {
-	            commit('auth_request')
-	            axios({url: 'http://192.168.43.13:9000/api/login', data: querystring.stringify(requestBody), method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded' }})
+	            commit('auth_request')//10.83.9.142 SB, 192.168.100.133 LT3, 192.168.100.47 LT2, 182.28.131.48 GIG, 10.30.40.112 PGD
+	            axios({url: 'http://192.168.43.76:9090/api/login', data: querystring.stringify(requestBody), method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded' }})
 	            .then(resp => {
 					const token = resp.data.token
 	                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token

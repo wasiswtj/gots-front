@@ -47,7 +47,7 @@ import axios from 'axios';
 
 export default {
   components: { TabOne, TabTwo, TabThree, TabFour, TabFive },
-  methods: {
+  methods: {   
     getScollableTabComp() {
       return <ScrollableTab />;
     },
@@ -81,8 +81,8 @@ export default {
     }
   },
   beforeMount() {
-    new Promise((resolve, reject) => {
-      this.$http({url: 'http://192.168.43.13:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
+    new Promise((resolve, reject) => {//10.83.9.142 SB, 192.168.100.133 LT3, 192.168.100.47 LT2, 182.28.131.48 GIG, 10.30.40.112 PGD
+      this.$http({url: 'http://192.168.43.76:9090/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
         this.dataPengajuan.no_pengajuan= resp.data.data.no_pengajuan
         this.dataPengajuan.no_cif= resp.data.data.no_cif

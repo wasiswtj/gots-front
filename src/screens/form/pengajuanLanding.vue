@@ -1,60 +1,39 @@
 <template>
-  <nb-container :style="{ backgroundColor: 'white' }">
-    <nb-header transparent>
-      <nb-left> </nb-left>
+  <nb-container :style="{ backgroundColor: '#e3e3e3' }">
+    <nb-header :style="{ marginTop: 20}">
+      <nb-left>
+        <nb-button transparent :onPress="() => this.props.navigation.goBack()">
+          <nb-icon name="arrow-back" />
+        </nb-button>
+      </nb-left>
       <nb-body>
-        <nb-title :style="{ color: 'green' }"> Gade On The Spot (GOTS)</nb-title>
+        <nb-title> Gadai</nb-title>
       </nb-body>
     </nb-header>
-
     <nb-content padder class="content-wrapper">
-      <nb-card :style="{ marginBottom: 200 }">
-        <nb-card-item>
-          <nb-left>
-            <nb-thumbnail :source="cover"></nb-thumbnail>
-            <nb-body>
-              <nb-text>Hello</nb-text>
-              <nb-text note>GeekyAnts</nb-text>
-            </nb-body>
-          </nb-left>
-        </nb-card-item>
-      </nb-card>
-
-      <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanLanding)" :style="{ flex: 1, marginBottom: 10 }">
-        <nb-text>Ajukan Gadai Sekarang</nb-text>
-      </nb-button>
-
       <nb-card :style="{ marginBottom: 15 }">
         <nb-card-item header bordered>
-          <nb-text :style="{ color: 'green' }">Menu Anda</nb-text>
+          <nb-text :style="{ color: 'green' }">Ajukan Gadai</nb-text>
         </nb-card-item>
 
         <nb-card-item>
           <nb-left/>
           <view class="view-wrapper-1" :style="{ marginTop:20 }">
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
+              <nb-button transparent :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" padded>
                 <nb-thumbnail large :source="logoPengajuan"></nb-thumbnail>
               </nb-button>
               <nb-text/>
               <nb-text>Pengajuan</nb-text>
-              <nb-text>Anda</nb-text>
+              <nb-text>Perhiasan</nb-text>
             </nb-list>
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(TransaksiAnda)" padded>
-                <nb-thumbnail large :source="cover"></nb-thumbnail>
+              <nb-button transparent :onPress="() => this.props.navigation.navigate(PengajuanElektronik)" padded>
+                <nb-thumbnail large :source="logoPengajuan"></nb-thumbnail>
               </nb-button>
               <nb-text/>
-              <nb-text>Transaksi</nb-text>
-              <nb-text>Anda</nb-text>
-            </nb-list>
-            <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(RiwayatAnda)" padded>
-                <nb-thumbnail large :source="cover"></nb-thumbnail>
-              </nb-button>
-              <nb-text/>
-              <nb-text>Riwayat</nb-text>
-              <nb-text>Anda</nb-text>
+              <nb-text>Pengajuan</nb-text>
+              <nb-text>Elektronik</nb-text>
             </nb-list>
           </view>
           <nb-right/>
@@ -77,28 +56,10 @@ export default {
       type: Object
     }
   },
-  created() {
-    this.navigation.navigate("Login")
-    
-    // if (store.state.token!=null) {
-    //   this.navigation.navigate("StatusPengajuan")
-    // }
-    // } catch (err) {} finally {
-    //   this.navigation.navigate(this.data.StatusPengajuan)
-    // }
-    // if (typeof(this.data.token)=='undefined') {
-    //   console.log('throughThis')
-    //   this.navigation.navigate(this.data.StatusPengajuan)
-    // }
-  },
   data() {
     return {
       PengajuanPerhiasan: "PengajuanPerhiasan",
       PengajuanElektronik: "PengajuanElektronik",
-      PengajuanLanding:"PengajuanLanding",
-      StatusPengajuan: "StatusPengajuan",
-      TransaksiAnda: "TransaksiAnda",
-      RiwayatAnda: "RiwayatAnda",
       launchScreenBg,
       launchscreenLogo,
       stylesObj: {

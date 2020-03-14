@@ -1,32 +1,30 @@
 <template>
-  <nb-container :style="{ backgroundColor: '#fff' }">
-    <nb-header>
-      <!-- <nb-left>
-        <nb-button transparent :onPress="() => this.props.navigation.goBack()">
-          <nb-icon name="arrow-back" />
-        </nb-button>
-      </nb-left> -->
-      <!-- <nb-left/> -->
-      <nb-body :style="{ marginLeft: 15 }">
-        <nb-title>GOTS Login</nb-title>
-      </nb-body>
-      <!-- <nb-right /> -->
-    </nb-header>
-
+  <nb-container :style="{ backgroundColor: 'white' }">
+    <!-- <nb-thumbnail square large :source="logoGots" :style="{ margin: 15}"></nb-thumbnail> -->
+    
+    <!-- <nb-title  :style="{ color: '#3CB371',marginTop:50 }">GOTS Login</nb-title> -->
     <nb-content padder>
-      <nb-form>
-        <nb-item floatingLabel>
+      <image
+        :style="{width:220, height:160,flex:1, marginTop:50, marginLeft:65, marginBottom:30
+        }"
+        :source="logoGots"
+      />
+      <nb-form >
+        <nb-item floatingLabel :style="{ margin: 15}">
           <nb-label>Email</nb-label>
           <nb-input v-model="email"/>
         </nb-item>
-        <nb-item floatingLabel last>
+        <nb-item floatingLabel :style="{ margin: 15}">
           <nb-label>Password</nb-label>
           <nb-input secureTextEntry v-model="password"/>
         </nb-item>
       </nb-form>
-      <nb-button :onPress="login" block :style="{ margin: 15, marginTop: 50 }">
-        <nb-text>Sign In</nb-text>
+      <nb-button rounded success :onPress="login" block :style="{ margin: 15, marginTop: 30 }">
+        <nb-text>Log In</nb-text>
       </nb-button>
+      <nb-footer transparent :style="{ backgroundColor: 'white',marginTop:110 }">
+        <text>Copyright  PT Aplikasi Karya Anak Six Fams</text>
+      </nb-footer>
     </nb-content>
   </nb-container>
 </template>
@@ -34,6 +32,7 @@
 <script>
 import { Dimensions, Platform } from "react-native";
 import { Toast } from "native-base";
+import logoGots from "../../../assets/logogots.png";
 
 export default {
   props: {
@@ -51,6 +50,7 @@ export default {
       email: '',
       password: '',
       loaded: false,
+      logoGots
     };
   },
   created() {

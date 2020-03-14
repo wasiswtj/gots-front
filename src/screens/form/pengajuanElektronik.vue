@@ -1,68 +1,50 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
     <nb-header :style="{ marginTop: 20}">
-      <nb-button transparent :style="{marginLeft:-20}":onPress="() => this.props.navigation.goBack()">
-        <nb-icon name="arrow-back" />
-      </nb-button>  
+      <nb-left>
+        <nb-button transparent :onPress="() => this.props.navigation.goBack()">
+          <nb-icon name="arrow-back" />
+        </nb-button>
+      </nb-left>
       <nb-body>
-        <nb-title :style="{marginLeft:5}">Pengajuan Gadai Perhiasan</nb-title>
+        <nb-title>Pengajuan Gadai Elektronik</nb-title>
       </nb-body>
     </nb-header>
 
     <nb-content padder>
       <nb-form>
-        <nb-label :style="{fontSize:15, marginLeft:15}">Jenis Perhiasan</nb-label> 
+        <nb-label >Jenis Elektronik</nb-label> 
         <nb-picker
           note
           mode="dropdown"
-          :style="{ width: 340, marginLeft:10,color:'black' }"
-          :selectedValue="jenisPerhiasan"
-          :onValueChange="onValueChangePerhiasan"
+          :style="{ width: 350 }"
+          :selectedValue="jenisElektronik"
+          :onValueChange="onValueChange"
       
         >
-          <item label="Logam Mulia" value="Logam Mulia" />
-          <item label="Cincin" value="Cincin" />
-          <item label="Gelang" value="Gelang" />
-          <item label="Anting / Giwang" value="Anting"/>
-          <item label="Kalung" value="Kalung"/>
-          <item label="Liontin" value="Liontin"/>
-          <item label="Perhiasan Lainnya" value="Perhiasan Lainnya"/>
-        </nb-picker>
-        <nb-label :style="{fontSize:15, marginLeft:15}">Kadar</nb-label> 
-        <nb-picker
-          note
-          mode="dropdown"
-          :style="{ width: 340, marginLeft:10,color:'black' }"
-          :selectedValue="kadar"
-          :onValueChange="onValueChangeKadar"
-      
-        >
-          <item label="15" value='0'/>
-          <item label="16" value='1'/>
-          <item label="17" value='2'/>
-          <item label="18" value='3'/>
-          <item label="19" value='4'/>
-          <item label="20" value='5'/>
-          <item label="21" value='6'/>
-          <item label="22" value='7'/>
-          <item label="23" value='8'/>
-          <item label="24" value='9'/>
+          <item label="Handphone" value='0' />
+          <item label="Laptop/PC" value='1' />
+          <item label="Kamera" value='2' />
+          <item label="Televisi" value='3'/>
+          <item label="Sound System / Alat Musik Listrik" value='4'/>
+          <item label="Kulkas" value='5'/>
+          <item label="Elektronik Lainnya" value='6'/>
         </nb-picker>
         <nb-item stackedLabel>
-          <nb-label :style="{color:'black'}" >Berat Kotor (Gram)</nb-label>
-          <nb-input v-model="beratKotor" :style="{fontSize:15}"/>
+          <nb-label >Merk</nb-label>
+          <nb-input v-model="merk"/>
         </nb-item>
         <nb-item stackedLabel>
-          <nb-label :style="{color:'black'}" >Berat Bersih (Gram)</nb-label>
-          <nb-input v-model="beratBersih" :style="{fontSize:15}"/>
+          <nb-label >Tipe</nb-label>
+          <nb-input v-model="tipe"/>
         </nb-item>
         <nb-item stackedLabel>
-          <nb-label :style="{color:'black'}">Perkiraan Pinjaman</nb-label>
-          <nb-input v-model="pinjaman" :style="{fontSize:15}"/>
+          <nb-label >Tahun Pembelian</nb-label>
+          <nb-input v-model="tahunBeli"/>
         </nb-item>
         <nb-item stackedLabel>
-          <nb-label :style="{color:'black'}">Deskripsi Barang</nb-label>
-          <nb-input v-model="keteranganBarang" :style="{fontSize:15}"/>
+          <nb-label >Deskripsi Barang</nb-label>
+          <nb-input v-model="keteranganBarang"/>
         </nb-item>
       </nb-form>
 
@@ -104,11 +86,10 @@ export default {
   },
   data() {
     return {
-      jenisPerhiasan: '',
-      kadar: '',
-      beratKotor: '',
-      beratBersih: '',
-      pinjaman:'',
+      jenisElektronik: '',
+      merk: '',
+      tipe: '',
+      tahunBeli: '',
       keteranganBarang:'',
       titikGadai: '',
       fotoPerhiasan: ''
@@ -129,20 +110,16 @@ export default {
   mounted() {
   },
   methods: {
-    onValueChangePerhiasan: function(value) {
-      this.jenisPerhiasan = value;
-    },
-    onValueChangeKadar: function(value) {
-      this.kadar = value;
+    onValueChange: function(value) {
+      this.jenisElektronik = value;
     },
     submitData: function () {
       var $data = {
         no_pengajuan: "9992020011800001",
-        jenis_perhiasan: this.jenisPerhiasan,
-        kadar: this.kadar,
-        berat_kotor: this.beratKotor,
-        berat_bersih: this.beratBersih,
-        pinjaman:this.pinjaman,
+        jenis_Elektronik: this.jenisElektronik,
+        merk: this.merk,
+        tipe: this.tipe,
+        tahunBeli: this.tahunBeli,
         keterangan_barang: this.keteranganBarang,
         titik_gadai: "-6.191365, 106.781534",
         foto_perhiasan: this.fotoPerhiasan,
