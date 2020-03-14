@@ -8,17 +8,23 @@
     </nb-header>
 
     <nb-content padder class="content-wrapper">
-      <nb-card :style="{ marginBottom: 200, borderRadius :15 }">
+      <nb-card :style="{ marginBottom: 15, borderRadius :15 }">
         <nb-card-item :style="{ borderRadius :15}">
           <nb-left>
             <nb-thumbnail :source="logoNasabah"></nb-thumbnail>
             <nb-body>
               <nb-text>Hello</nb-text>
-              <nb-text note>GeekyAnts</nb-text>
+              <nb-text note>Caroline</nb-text>
             </nb-body>
           </nb-left>
         </nb-card-item>
       </nb-card>
+
+      <image
+        :source="logoGots"
+        class="card-item-image"
+        :style="{width: 340, height:190, flex:1, marginBottom: 15, borderRadius: 15 }"
+      />
 
       <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" :style="{ flex: 1, marginBottom: 10 }">
         <nb-text>Ajukan Gadai Sekarang</nb-text>
@@ -42,7 +48,7 @@
             </nb-list>
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
               <nb-button transparent :onPress="checkState" padded>
-                <nb-thumbnail large :source="cover"></nb-thumbnail>
+                <nb-thumbnail large :source="logoTransaksi"></nb-thumbnail>
               </nb-button>
               <nb-text/>
               <nb-text>Transaksi</nb-text>
@@ -50,7 +56,7 @@
             </nb-list>
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
               <nb-button transparent :onPress="() => this.props.navigation.navigate()" padded>
-                <nb-thumbnail large :source="cover"></nb-thumbnail>
+                <nb-thumbnail large :source="logoRiwayat"></nb-thumbnail>
               </nb-button>
               <nb-text/>
               <nb-text>Riwayat</nb-text>
@@ -71,6 +77,10 @@ import launchscreenLogo from "../../../assets/logo-kitchen-sink.png";
 import cover from "../../../assets/web-cover1.jpg";
 import logoNasabah from "../../../assets/nasabah.png";
 import logoPengajuan from "../../../assets/logo-pengajuan.png";
+import logoGots from "../../../assets/gots-logo.jpg";
+import logoTransaksi from "../../../assets/logo-transaksi.png";
+import logoRiwayat from "../../../assets/logo-riwayat.png";
+
 
 export default {
   props: {
@@ -103,6 +113,9 @@ export default {
       cover,
       logoPengajuan,
       logoNasabah,
+      logoGots,
+      logoTransaksi,
+      logoRiwayat,
       token: this.$store.state.token
     };
   },

@@ -16,7 +16,7 @@
     <nb-content padder>
       <nb-form>
         <nb-item floatingLabel>
-          <nb-label>Email</nb-label>
+          <nb-label>CIF</nb-label>
           <nb-input v-model="email"/>
         </nb-item>
         <nb-item floatingLabel last>

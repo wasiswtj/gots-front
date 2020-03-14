@@ -34,16 +34,15 @@
           :selectedValue="kadar"
           :onValueChange="onValueChangeKadar"
         >
-          <item label="15" value='15'/>
-          <item label="16" value='16'/>
-          <item label="17" value='17'/>
-          <item label="18" value='18'/>
-          <item label="19" value='19'/>
-          <item label="20" value='20'/>
-          <item label="21" value='21'/>
-          <item label="22" value='22'/>
-          <item label="23" value='23'/>
-          <item label="24" value='24'/>
+          <item label="16 karat" value='16'/>
+          <item label="17 karat" value='17'/>
+          <item label="18 karat" value='18'/>
+          <item label="19 karat" value='19'/>
+          <item label="20 karat" value='20'/>
+          <item label="21 karat" value='21'/>
+          <item label="22 karat" value='22'/>
+          <item label="23 karat" value='23'/>
+          <item label="24 karat" value='24'/>
         </nb-picker>
         <!-- <nb-item stackedLabel>
           <nb-label >Jenis Perhiasan</nb-label>
