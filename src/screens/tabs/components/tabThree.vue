@@ -110,6 +110,9 @@
     </nb-card>
 
     <nb-card :style="{ borderRadius: 15 }">
+      <nb-card-item header bordered :style="{ borderRadius: 15 }">
+        <nb-text>Informasi Cabang</nb-text>
+      </nb-card-item>
       <nb-card-item class="container" :style="{ borderRadius: 15 }">
         <map-view class="map-style"
           :showsUserLocation="true"

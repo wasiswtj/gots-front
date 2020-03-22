@@ -78,7 +78,7 @@ export default {
     }
   },
   beforeMount() {
-    new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {//10.83.9.142 SB, 192.168.100.133 LT3, 192.168.100.47 LT2, 182.28.131.48 GIG, 10.30.40.112 PGD
       this.$http({url: 'http://192.168.43.13:9000/api/status_pengajuan', data: '', method: 'GET', headers: {'Content-Type': 'application/json' }})
       .then(resp => {
         this.dataPengajuan = resp.data.data

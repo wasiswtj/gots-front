@@ -149,11 +149,19 @@ import ToastTypeScreen from "./screens/toast/toastType";
 
 import TypographyScreen from "./screens/typography";
 
+
 // Import Gade OTS Screen
 import StatusPengajuanScreen from "./screens/tabs/statusPengajuan";
 import LoginScreen from "./screens/login/login";
 import PengajuanPerhiasanScreen from "./screens/form/pengajuanPerhiasan";
-
+import PengajuanElektronikScreen from "./screens/form/pengajuanElektronik";
+import PengajuanLandingScreen from "./screens/form/pengajuanLanding";
+import TransaksiAndaScreen from "./screens/list/transaksiAnda";
+import DetailTransaksiScreen from "./screens/list/detailTransaksi";
+import StatusTransaksiAndaScreen from "./screens/card/statusTransaksiAnda";
+import RiwayatAndaScreen from "./screens/list/riwayatAnda";
+import DetailRiwayatScreen from "./screens/list/detailRiwayat";
+import StatusRiwayatAndaScreen from "./screens/card/statusRiwayatAnda";
 const Drawer = createDrawerNavigator(
   {
     // Login: {screen: LoginScreen},
@@ -304,7 +312,15 @@ const AppNavigation = createAppContainer(
       // Screen Gadai On The Spot
       StatusPengajuan: { screen: StatusPengajuanScreen },
       Login: { screen: LoginScreen },
-      PengajuanPerhiasan: { screen: PengajuanPerhiasanScreen}
+      PengajuanPerhiasan: { screen: PengajuanPerhiasanScreen},
+      PengajuanElektronik: { screen: PengajuanElektronikScreen},
+      PengajuanLanding: { screen: PengajuanLandingScreen},
+      TransaksiAnda: { screen: TransaksiAndaScreen},
+      DetailTransaksi: { screen: DetailTransaksiScreen},
+      StatusTransaksiAnda: { screen: StatusTransaksiAndaScreen},
+      RiwayatAnda: { screen: RiwayatAndaScreen},
+      DetailRiwayat: { screen: DetailRiwayatScreen},
+      StatusRiwayatAnda: { screen: StatusRiwayatAndaScreen},
     },
     {
       initialRouteName: "Drawer",

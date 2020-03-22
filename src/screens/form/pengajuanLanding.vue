@@ -1,66 +1,39 @@
 <template>
-  <nb-container :style="{ backgroundColor: 'white' }">
-    <nb-header :style="{backgroundColor:'white'}">
-      <nb-left> </nb-left>
+  <nb-container :style="{ backgroundColor: '#e3e3e3' }">
+    <nb-header :style="{ marginTop: 20}">
+      <nb-left>
+        <nb-button transparent :onPress="() => this.props.navigation.goBack()">
+          <nb-icon name="arrow-back" />
+        </nb-button>
+      </nb-left>
       <nb-body>
-        <nb-title :style="{ color: 'green' }"> Gade On The Spot (GOTS)</nb-title>
+        <nb-title> Gadai</nb-title>
       </nb-body>
     </nb-header>
-
     <nb-content padder class="content-wrapper">
-      <nb-card :style="{ marginBottom: 15, borderRadius :15 }">
-        <nb-card-item :style="{ borderRadius :15}">
-          <nb-left>
-            <nb-thumbnail :source="logoNasabah"></nb-thumbnail>
-            <nb-body>
-              <nb-text>Hello</nb-text>
-              <nb-text note>Caroline</nb-text>
-            </nb-body>
-          </nb-left>
-        </nb-card-item>
-      </nb-card>
-
-      <image
-        :source="logoGots"
-        class="card-item-image"
-        :style="{width: 340, height:190, flex:1, marginBottom: 15, borderRadius: 15 }"
-      />
-
-      <nb-button rounded success :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" :style="{ flex: 1, marginBottom: 10 }">
-        <nb-text>Ajukan Gadai Sekarang</nb-text>
-      </nb-button>
-
-      <nb-card :style="{ marginBottom: 15, borderRadius: 15 }">
-        <nb-card-item header bordered :style="{ borderRadius: 15 }">
-          <nb-text :style="{ color: 'green' }">Menu Anda</nb-text>
+      <nb-card :style="{ marginBottom: 15 }">
+        <nb-card-item header bordered>
+          <nb-text :style="{ color: 'green' }">Ajukan Gadai</nb-text>
         </nb-card-item>
 
-        <nb-card-item :style="{ borderRadius: 15 }">
+        <nb-card-item>
           <nb-left/>
           <view class="view-wrapper-1" :style="{ marginTop:20 }">
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(StatusPengajuan)" padded>
+              <nb-button transparent :onPress="() => this.props.navigation.navigate(PengajuanPerhiasan)" padded>
                 <nb-thumbnail large :source="logoPengajuan"></nb-thumbnail>
               </nb-button>
               <nb-text/>
               <nb-text>Pengajuan</nb-text>
-              <nb-text>Anda</nb-text>
+              <nb-text>Perhiasan</nb-text>
             </nb-list>
             <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(TransaksiAnda)" padded>
-                <nb-thumbnail large :source="logoTransaksi"></nb-thumbnail>
+              <nb-button transparent :onPress="() => this.props.navigation.navigate(PengajuanElektronik)" padded>
+                <nb-thumbnail large :source="logoPengajuan"></nb-thumbnail>
               </nb-button>
               <nb-text/>
-              <nb-text>Transaksi</nb-text>
-              <nb-text>Anda</nb-text>
-            </nb-list>
-            <nb-list :style="{justifyContent: 'center', alignItems: 'center', margin:10 }">
-              <nb-button transparent :onPress="() => this.props.navigation.navigate(RiwayatAnda)" padded>
-                <nb-thumbnail large :source="logoRiwayat"></nb-thumbnail>
-              </nb-button>
-              <nb-text/>
-              <nb-text>Riwayat</nb-text>
-              <nb-text>Anda</nb-text>
+              <nb-text>Pengajuan</nb-text>
+              <nb-text>Elektronik</nb-text>
             </nb-list>
           </view>
           <nb-right/>
@@ -75,12 +48,7 @@ import { Dimensions, Platform } from "react-native";
 import launchScreenBg from "../../../assets/launchscreen-bg.png";
 import launchscreenLogo from "../../../assets/logo-kitchen-sink.png";
 import cover from "../../../assets/web-cover1.jpg";
-import logoNasabah from "../../../assets/nasabah.png";
 import logoPengajuan from "../../../assets/logo-pengajuan.png";
-import logoGots from "../../../assets/gots-logo.jpg";
-import logoTransaksi from "../../../assets/logo-transaksi.png";
-import logoRiwayat from "../../../assets/logo-riwayat.png";
-
 
 export default {
   props: {
@@ -88,17 +56,10 @@ export default {
       type: Object
     }
   },
-  created() {
-    this.navigation.navigate("Login")
-  },
   data() {
     return {
       PengajuanPerhiasan: "PengajuanPerhiasan",
       PengajuanElektronik: "PengajuanElektronik",
-      PengajuanLanding:"PengajuanLanding",
-      StatusPengajuan: "StatusPengajuan",
-      TransaksiAnda: "TransaksiAnda",
-      RiwayatAnda: "RiwayatAnda",
       launchScreenBg,
       launchscreenLogo,
       stylesObj: {
@@ -116,10 +77,6 @@ export default {
       },
       cover,
       logoPengajuan,
-      logoNasabah,
-      logoGots,
-      logoTransaksi,
-      logoRiwayat,
       token: this.$store.state.token
     };
   },
@@ -135,7 +92,7 @@ export default {
       .catch(err => console.log(err))
     },
     checkState: function () {
-      console.log(this.$store.state)
+      console.log(this.$store.state.token)
     }
   }
 };
