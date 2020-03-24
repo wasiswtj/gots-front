@@ -8,6 +8,23 @@
       </nb-card-item>
     </nb-card>
 
+    <nb-content padder v-if="otpValidated==false" :style="{ marginLeft: -8 }">
+      <nb-form :style="{ flexDirection:'row' }">
+        <nb-item regular :style="{ flex: 3, borderRadius: 15 }">
+          <nb-input placeholder="Masukkan kode OTP anda" />
+        </nb-item>
+        <nb-button primary :onPress="validateOtp" :style="{ flex: 1, marginLeft: 5, marginTop: 2, borderRadius: 15, paddingLeft: 6 }">
+          <nb-text :style="{justifyContent: 'center'}">Kirim</nb-text>
+        </nb-button>
+      </nb-form>
+
+      <nb-text :style="{ fontSize: 10, marginBottom: 10, marginLeft: 10 }">*Harap masukkan kode OTP anda sebelum menyerahkan barang anda kepada penaksir</nb-text>
+    </nb-content>
+
+    <nb-button rounded success v-if="otpValidated==true" :style="{ flex: 1, marginBottom: 10 }">
+      <nb-text>Validasi OTP Berhasil</nb-text>
+    </nb-button>
+
     <nb-card :style="{ borderRadius: 15 }">
       <nb-card-item header bordered :style="{ borderRadius: 15 }">
         <nb-text>Informasi Penaksir</nb-text>
@@ -68,6 +85,12 @@ export default {
   data() {
     return {
       logoPenaksir,
+      otpValidated: false
+    }
+  },
+  methods: {
+    validateOtp() {
+      this.otpValidated = true
     }
   }
 }    
